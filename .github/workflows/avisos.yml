@@ -1,0 +1,29 @@
+name: Revisar participación semanal
+on:
+  schedule:
+    # 00:17 UTC = 18:17 del día anterior en Monterrey.
+    - cron: '17 0 * * *'
+  workflow_dispatch:
+permissions:
+  contents: read
+concurrency:
+  group: avisos-participacion
+  cancel-in-progress: false
+jobs:
+  notify:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '22'
+      - name: Preparar envío
+        run: npm install --no-save --ignore-scripts --package-lock=false web-push@3.6.7
+      - name: Revisar y notificar
+        run: node notifications/send.mjs
+        env:
+          ROL_ENDPOINT: ${{ secrets.ROL_ENDPOINT }}
+          ROL_SCAN_KEY: ${{ secrets.ROL_SCAN_KEY }}
+          VAPID_PUBLIC_KEY: ${{ secrets.VAPID_PUBLIC_KEY }}
+          VAPID_PRIVATE_KEY: ${{ secrets.VAPID_PRIVATE_KEY }}
+          VAPID_SUBJECT: ${{ secrets.VAPID_SUBJECT }}
