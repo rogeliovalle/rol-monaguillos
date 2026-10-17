@@ -9,7 +9,8 @@ App instalable para iPhone, Android y computadora. Interfaz en español y calend
 - Meses nuevos con fechas correctas y horarios habituales, sin copiar participantes.
 - Domingos con cuatro horarios independientes y Capilla La Inmaculada a las 17:00.
 - Mensajes generales del día, subtítulos y mensajes por misa; celebraciones adicionales.
-- Nombres seleccionables sin duplicados en una misma misa. Se permite otra hora del mismo día.
+- Botón desplegable por misa para seleccionar varios monaguillos con casillas, búsqueda y recuento de seleccionados. No admite duplicados en una misma misa; permite otra hora del mismo día.
+- De lunes a viernes se prepara únicamente la misa de 19:00. Las celebraciones adicionales se crean con Añadir otra misa. Los sábados se preparan cuando se necesitan; el domingo conserva sus cuatro horarios. Los roles guardados no se sobrescriben.
 - Alta, edición y eliminación de nombres con confirmación explícita. Recuperación de eliminados y conservación de sus participaciones anteriores.
 - Panel semanal de monaguillos sin misa; actualización inmediata durante la edición. Recuento provisional cuando falten días por descargar o cargar.
 - PNG del mes o de una semana, con vista previa, descarga, compartir y copia cuando el dispositivo lo permita.
@@ -37,7 +38,7 @@ La primera configuración del servicio se realiza en la cuenta propietaria. La a
 3. Ejecutar `configurarConexion` una vez, revisar y autorizar los permisos de acceso al archivo que presenta Google.
 4. Guardar las dos claves del registro de ejecución de forma privada: **clave de la app** y **clave del barrido**. Nunca copiarlas al repositorio. Volver a ejecutar esta función revoca las claves anteriores.
 5. Implementar → Nueva implementación → Aplicación web. Ejecutar como propietario. Permitir el acceso de conexión a **Cualquier persona**: los datos siguen protegidos porque cada solicitud privada exige una clave aleatoria de alta entropía y el servidor verifica su hash. `doGet` no devuelve datos del rol.
-6. Copiar el enlace terminado en `/exec` a Conexión y respaldos de la app, junto con la **clave de la app**. Utilizar la misma conexión en los dos teléfonos.
+6. Copiar el enlace terminado en `/exec` a Conexión y respaldos de la app, junto con la **clave de la app**. Para conectar otro teléfono: Guardar conexión para otro iPhone → compartir el archivo privado solo con la persona administradora → Conectar con archivo privado en el nuevo teléfono. El archivo contiene la clave; nunca publicarlo ni incluirlo en el repositorio.
 7. Pulsar Sincronizar y verificar que octubre coincide con el archivo original. Probar primero una edición reversible y revisar el resultado en Google Sheets.
 
 El servidor toma el ID del archivo vinculado mediante `getActiveSpreadsheet()`. Nunca busca archivos por nombre ni crea una copia de respaldo como destino de escritura. Al abrir otro mes crea una pestaña con su nombre y año en ese mismo archivo. Clona el estilo de Octubre 2026 cuando está disponible y adapta filas, fechas y espacio. Las pestañas semanales históricas existentes no se modifican.
@@ -77,6 +78,6 @@ Actions puede retrasar tareas programadas y puede desactivar la programación tr
 - El modo sin conexión requiere que la app y los datos se hayan cargado previamente. Los datos locales dependen del almacenamiento del navegador; los respaldos y la sincronización sirven para recuperarlos si se borran.
 - Los cambios solo llegan al otro teléfono después de sincronizar. No se muestra un guardado local como si ya estuviera subido a Google.
 - Los respaldos no contienen claves de conexión ni suscripciones Push.
-- Pendiente de prueba real: publicación HTTPS, primera sincronización con Google, PNG en Safari y recepción Push en iPhone.
+- Verificado en la publicación HTTPS: primera sincronización con Google y generación de PNG mensual y semanal en Chrome. Pendiente de comprobar en los iPhone: PNG en Safari, recepción Push y almacenamiento sin conexión.
 
 La vista previa del entorno de desarrollo no pudo iniciarse por una limitación del contenedor (`bwrap` no pudo montar `/proc`). Esto no es una prueba de funcionamiento visual en navegador. No se ha modificado el archivo original durante la preparación del código.
