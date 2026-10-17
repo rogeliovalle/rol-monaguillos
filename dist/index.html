@@ -1,0 +1,17 @@
+<!doctype html>
+<html lang="es">
+<head>
+<meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<meta name="theme-color" content="#003fa3"><meta name="apple-mobile-web-app-capable" content="yes"><meta name="apple-mobile-web-app-status-bar-style" content="default">
+<meta name="description" content="Rol de monaguillos de la Parroquia Anunciación a María. Calendario, asignaciones y consulta sin conexión.">
+<title>Rol · Monaguillos</title><link rel="manifest" href="./manifest.webmanifest"><link rel="icon" href="./icon.svg" type="image/svg+xml"><link rel="apple-touch-icon" href="./icon-192.png"><link rel="stylesheet" href="./style.css">
+</head>
+<body>
+<div class="app-shell">
+ <aside class="sidebar"><a class="brand" href="#rol" aria-label="Ir al rol"><span class="brand-symbol">✝</span><span>Monaguillos<small>ANUNCIACIÓN A MARÍA</small></span></a><div class="side-caption">NUESTRO SERVICIO</div><nav aria-label="Navegación principal"><button data-nav="rol"><span>▦</span>Rol</button><button data-nav="editar"><span>✎</span>Actualizar rol</button><button data-nav="personas"><span>♧</span>Monaguillos</button><button data-nav="historial"><span>◷</span>Historial</button></nav><div class="side-bottom"><div class="service-quote">Servir con alegría.<br><span>Organizarnos con cariño.</span></div><button class="settings-link" data-nav="ajustes">⚙ <span>Conexión y respaldos</span></button><span class="version">ROL PARROQUIAL · V1.0</span></div></aside>
+ <div class="main-shell"><header class="topbar"><span id="breadcrumb">Nuestro servicio / Rol mensual</span><div class="top-actions"><span id="connection" class="connection" role="status"></span><button id="sync" class="btn small">↻ <span>Sincronizar</span></button></div></header><main id="main" tabindex="-1"></main><footer class="app-footer"><span>Parroquia Anunciación a María</span><span id="save-status" role="status">Guardado en este teléfono</span></footer></div>
+</div>
+<nav class="mobile-nav" aria-label="Navegación móvil"><button data-nav="rol">▦<span>Rol</span></button><button data-nav="editar">✎<span>Actualizar</span></button><button data-nav="personas">♧<span>Monaguillos</span></button><button data-nav="ajustes">⚙<span>Más</span></button></nav>
+<dialog id="modal"><div id="modal-content"></div></dialog><div id="toast" role="status" aria-live="polite"></div>
+<noscript>Activa JavaScript para abrir y editar el rol.</noscript><script type="module" src="./app.js"></script>
+</body></html>
